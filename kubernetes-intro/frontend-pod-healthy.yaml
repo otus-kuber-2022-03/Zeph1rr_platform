@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: frontend
+  name: frontend
+spec:
+  containers:
+  - image: zeph1rrio/hipstershop-frontend:1.0.0
+    name: frontend
+    resources: {}
+    env:
+    - name: PORT
+      value: "8000"
+    - name: PRODUCT_CATALOG_SERVICE_ADDR
+      value: "localhost"
+    - name: CURRENCY_SERVICE_ADDR
+      value: "localhost"
+    - name: CART_SERVICE_ADDR
+      value: "localhost"
+    - name: RECOMMENDATION_SERVICE_ADDR
+      value: "localhost"
+    - name: SHIPPING_SERVICE_ADDR
+      value: "localhost"
+    - name: CHECKOUT_SERVICE_ADDR
+      value: "localhost"
+    - name: AD_SERVICE_ADDR
+      value: "localhost"
+  dnsPolicy: ClusterFirst
+  restartPolicy: Never
+status: {}
