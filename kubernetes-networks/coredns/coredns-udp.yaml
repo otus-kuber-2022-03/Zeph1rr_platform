@@ -6,7 +6,7 @@ metadata:
   annotations:
     metallb.universe.tf/allow-shared-ip: "dns"
 spec:
-  LoadBalancerIP: 172.17.255.1
+  LoadBalancerIP: 172.17.255.10
   selector:
     k8s-app: kube-dns
   type: LoadBalancer
