@@ -3,21 +3,30 @@ kind: Pod
 metadata:
   name: web
   labels:
-    app: kube-intro
+    app: web
 spec:
   containers:
-  - name: web
-    image: zeph1rrio/kube-intro
-    volumeMounts:
+    - name: web
+      image: zeph1rrio/kube-intro:latest
+      readinessProbe:
+        httpGet:
+          path: /index.html
+          port: 80
+      livenessProbe:
+        tcpSocket:
+          port: 8000
+      volumeMounts:
+      - name: app
+        mountPath: /app
+      ports:
+        - containerPort: 8000
+  volumes:
     - name: app
-      mountPath: /app
+      emptyDir: {}
   initContainers:
-  - name: init
-    image: busybox:stable
+  - name: init-web
+    image: busybox:latest
     command: ['sh', '-c', 'wget -O- https://tinyurl.com/otus-k8s-intro | sh']
     volumeMounts:
-    - name: app
-      mountPath: /app
-  volumes:
-  - name: app
-    emptyDir: {}  
+      - name: app
+        mountPath: /app
