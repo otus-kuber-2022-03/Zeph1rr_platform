@@ -1,0 +1,16 @@
+expose:
+  type: ingress
+  ingress:
+    annotations:
+      kubernetes.io/ingress.class: nginx
+      kubernetes.io/tls-acme: "true"
+      cert-manager.io/cluster-issuer: "homework-issuer"
+      cert-manager.io/acme-challenge-type: http01
+    hosts:
+      core: harbor.104.197.59.85.sslip.io
+  tls:
+    secret:
+      secretName: harbor.84.252.136.98.nip.io
+externalURL: https://harbor.84.252.136.98.nip.io
+notary:
+  enabled: false
