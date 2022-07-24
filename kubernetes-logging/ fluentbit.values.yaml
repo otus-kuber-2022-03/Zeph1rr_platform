@@ -1,0 +1,22 @@
+backend:
+  type: es
+  es:
+    host: elasticsearch-master
+
+tolerations:
+  - key: node-role
+    operator: Equal
+    value: infra
+    effect: NoSchedule
+
+rawConfig: |
+  @INCLUDE fluent-bit-service.conf
+  @INCLUDE fluent-bit-input.conf
+  @INCLUDE fluent-bit-filter.conf
+  [FILTER]
+    Name    modify
+    Match   kube.*
+    Remove  time
+    Remove  @timestamp
+  @INCLUDE fluent-bit-output.conf
+filter.mergeJSONLog: true

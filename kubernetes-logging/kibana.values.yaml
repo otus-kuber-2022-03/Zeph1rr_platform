@@ -1,0 +1,8 @@
+ingress:
+ enabled: true
+ annotations: {
+   kubernetes.io/ingress.class: nginx
+ }
+ path: /
+ hosts:
+   - kibana.158.160.5.116.xip.io
