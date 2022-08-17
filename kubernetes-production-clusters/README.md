@@ -1,12 +1,17 @@
-# Zeph1rr_platform
-
-## Kubernetes-Production-Cluster
-
 # Подготовка
 
-развернут 1 `master` и 3 `worker`
+развернут 1 `master` и 3 `worker` c помощью `terraform` - [infra](infra/)
 
-На всех нодах выполнена установка необходимых пакетов
+```
+➜  kubernetes-production-clusters git:(kubernetes-production-clusters) ✗ gcloud compute instances list                                         
+NAME      ZONE            MACHINE_TYPE   PREEMPTIBLE  INTERNAL_IP  EXTERNAL_IP     STATUS
+master-0  europe-west1-b  n1-standard-2               10.132.0.43  34.78.182.17    RUNNING
+worker-0  europe-west1-b  n1-standard-1               10.132.0.41  34.78.86.155    RUNNING
+worker-1  europe-west1-b  n1-standard-1               10.132.0.42  35.241.144.104  RUNNING
+worker-2  europe-west1-b  n1-standard-1               10.132.0.44  34.76.136.216   RUNNING
+```
+
+на всех нодах выполнен скрипт - [run.sh](run.sh).
 
 ---
 
